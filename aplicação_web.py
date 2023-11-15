@@ -39,7 +39,7 @@ def add_carro():
     marca = request.form.get('marca')
     modelo = request.form.get('modelo')
     matricula = request.form.get('matricula')
-
+    mensagem = "Carro Adicionado Com Sucesso!"
     conn = connect_db()
     cursor = conn.cursor()
 
@@ -51,16 +51,17 @@ def add_carro():
         if existe:
             # Se ja existe na base de dados envia uma mensagem de erro
             mensagem = "A matricula já existe na Base de Dados"
-            return render_template('paginainicial.html', carros=[], error_message=mensagem)
-
-        # Insere o registo na base de dados se a matricula ainda não existe
-        cursor.execute('INSERT INTO public.frota(marca, modelo, matricula)VALUES (%s, %s, %s);', (marca, modelo,matricula))
-        conn.commit()
+        else: 
+            # Insere o registo na base de dados se a matricula ainda não existe
+            cursor.execute('INSERT INTO public.frota(marca, modelo, matricula)VALUES (%s, %s, %s);', (marca, modelo,matricula))
+            conn.commit()
     finally:
+        cursor.execute('SELECT * FROM frota;')
+        carros = cursor.fetchall()
         cursor.close()
         conn.close()
 
-    return redirect(url_for('listarfrota'))
+    return render_template('paginainicial.html', carros=carros, error_message=mensagem)
 
 @app.route('/delete_carro/<matricula>', methods=['GET'])
 def delete_carro(matricula):
