@@ -19,22 +19,22 @@ Antes de executar a aplicação, certifique-se de que tem o seguinte instalado:
 ## Instalação
 
 - Clone o repositório:
-
+    ```
     git clone https://github.com/JoaoPedroAfonsoSena/DesafioRolearJoaoSena
     cd DesafioRolearJoaoSena
-
+    ```
 - Instale as dependências:
-
+    ```
     pip install -r requirements.txt
-
+    ```
 - Configure a Base de Dados PostgreSQL
 
     Pode utilizar o programa pgAdmin4 para correr a base de dados
 
     Criação da base de dados:
-
+    ```
     CREATE DATABASE frotadecarros
-
+    
     CREATE TABLE IF NOT EXISTS public.frota
     (
     id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
@@ -48,7 +48,7 @@ Antes de executar a aplicação, certifique-se de que tem o seguinte instalado:
 
     ALTER TABLE IF EXISTS public.frota
         OWNER to postgres;
-
+    ```
 ## Utilização
 
 - Verifique que tem a base de dados configurada corretamente incluindo dentro do ficheiro aplicação_web.py debaixo do comentario "Configuração da Base de Dados".
