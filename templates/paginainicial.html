@@ -6,13 +6,16 @@
 </head>
 <body>
     <h1>Frota!</h1>
+
     <ul>
         {% for carro in carros %}
             <li>{{ carro[1] }} - {{ carro[2] }} - {{ carro[3] }}</li>
+            <a href="{{ url_for('delete_carro', matricula=carro[3]) }}" onclick="return confirm('Queres mesmo remover este carro?');">Apagar</a>
         {% endfor %}
         <br>
         {% if error_message %}
         <p style="color: red;">{{ error_message }}</p>
+       
     {% endif %}
     </ul>
 

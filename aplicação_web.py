@@ -62,5 +62,18 @@ def add_carro():
 
     return redirect(url_for('listarfrota'))
 
+@app.route('/delete_carro/<matricula>', methods=['GET'])
+def delete_carro(matricula):
+    conn = connect_db()
+    cursor = conn.cursor()
+
+    cursor.execute('DELETE FROM frota WHERE matricula = %s;', (matricula,))
+    conn.commit()
+    
+    cursor.close()
+    conn.close()
+
+    return redirect(url_for('listarfrota'))
+
 if __name__ == '__main__':
     app.run(debug=True)
