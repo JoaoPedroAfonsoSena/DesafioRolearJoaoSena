@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Inicial</title>
+</head>
+<body>
+    <h1>Frota!</h1>
+    <ul>
+        {% for carro in carros %}
+            <li>{{ carro[1] }} - {{ carro[2] }} - {{ carro[3] }}</li>
+        {% endfor %}
+        <br>
+        {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+    </ul>
+
+    <h2>Adicionar Carro</h2>
+    <form action="{{ url_for('add_carro') }}" method="post">
+        <label for="marca">Marca:</label>
+        <input type="text" name="marca" required>
+        <br>
+        <br>
+        <label for="modelo">Modelo:</label>
+        <input type="modelo" name="modelo" required>
+        <br>
+        <br>
+        <label for="matricula">Matricula:</label>
+        <input type="matricula" name="matricula" required>
+        <br>
+        <br>
+        <button type="submit">Adicionar Carro!</button>
+    </form>
+</body>
+</html>
