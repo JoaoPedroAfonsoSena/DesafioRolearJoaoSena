@@ -1,6 +1,6 @@
 # Aplicação Flask de Gestão de Frota com PostgreSQL
 
-Pequena aplicação web que permite Listar, adicionar e eliminar carros de uma frota utilizando Python com a blibloteca Flask e tambem Postgresql como base de dados.
+Pequena aplicação web que permite Listar, adicionar e eliminar carros de uma frota utilizando Python com a biblioteca Flask e também Postgresql como base de dados.
 
 ## Funcionalidades
 
@@ -48,14 +48,18 @@ Antes de executar a aplicação, certifique-se de que tem o seguinte instalado:
 
     ALTER TABLE IF EXISTS public.frota
         OWNER to postgres;
+
+    INSERT INTO public.frota(
+	marca, modelo, matricula)
+	VALUES ('Ford', 'GT', '88-88-88');
     ```
 ## Utilização
 
-- Verifique que tem a base de dados configurada corretamente incluindo dentro do ficheiro aplicação_web.py debaixo do comentario "Configuração da Base de Dados".
+- Verifique que tem a base de dados configurada corretamente incluindo dentro do ficheiro aplicação_web.py debaixo do comentário "Configuração da Base de Dados".
 - Run no ficheiro aplicação_web.py
 - Aceda à aplicação no seu navegador. (http://127.0.0.1:5000/)
 - Veja os Carros existentes na página inicial.
-- Para adicionar um novo Carro, introduza a Marca,Modelo e a Matricula únicas  no formulário fornecido e clique em "Adicionar Carro!".
+- Para adicionar um novo Carro, introduza a Marca, Modelo e a Matricula únicas  no formulário fornecido e clique em "Adicionar Carro!".
 - Para eliminar um carro clique em "apagar" logo abaixo do registo de cada carro.
 
 ## Resolução de Problemas
